@@ -9,7 +9,6 @@ import OtpVerification from "../pages/OtpVerification";
 import ResetPassword from "../pages/ResetPassword";
 import Dashboard from "../layout/Dashboard";
 import Profile from "../pages/Profile";
-import Myorders from "../pages/Myorders";
 import Address from "../pages/Address";
 import Category from "../pages/category";
 import Subcategory from "../pages/Subcategory";
@@ -22,6 +21,7 @@ import CartMobile from "../pages/CartMobile";
 import CheckOutPage from "../pages/CheckOutPage";
 import Success from "../pages/Success";
 import Cancel from "../pages/Cancel";
+import MyOrders from "../pages/Myorders";
 
 let router = createBrowserRouter([
   {
@@ -66,7 +66,7 @@ let router = createBrowserRouter([
           },
           {
             path: "order",
-            element: <Myorders />,
+            element: <MyOrders />,
           },
           {
             path: "address",
