@@ -10,7 +10,7 @@ import ResetPassword from "../pages/ResetPassword";
 import Dashboard from "../layout/Dashboard";
 import Profile from "../pages/Profile";
 import Address from "../pages/Address";
-import Category from "../pages/category";
+import Category from "../pages/Category";
 import Subcategory from "../pages/Subcategory";
 import UploadProduct from "../pages/UploadProduct";
 import ProductAdmin from "../pages/ProductAdmin";
