@@ -21,7 +21,7 @@ import CartMobile from "../pages/CartMobile";
 import CheckOutPage from "../pages/CheckOutPage";
 import Success from "../pages/Success";
 import Cancel from "../pages/Cancel";
-import MyOrders from "../pages/Myorders";
+import MyOrders from "../pages/MyOrders";
 
 let router = createBrowserRouter([
   {
