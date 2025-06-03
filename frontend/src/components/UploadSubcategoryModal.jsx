@@ -79,7 +79,7 @@ const UploadSubcategoryModal = ({
   };
 
   const modalRef = useRef();
-  const inputRef = useRef();j
+  const inputRef = useRef();
   useEffect(() => {
     if (modalRef.current) {
       modalRef.current.showModal();

@@ -36,13 +36,11 @@ const Signup = () => {
       toast.error("password and confirm password must be same.");
       return;
     }
-
     try {
       const response = await Axios({
         ...SummaryApi.register,
         data: data,
       });
-
       if (response.status === 201 || response.data.success) {
         toast.success(response.data.message);
         setData({
@@ -61,7 +59,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-2xl shadow-2xl">
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-2xl shadow-2xl min-h-[65vh]">
       <h2 className="text-2xl font-semibold mb-6 text-center">
         Welcome to Dharohar Mart
       </h2>

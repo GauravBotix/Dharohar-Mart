@@ -5,11 +5,17 @@ import SummaryApi from "../common/SummaryApi";
 import toast from "react-hot-toast";
 import AxiosToastError from "../utils/AxiosError";
 import { FaExternalLinkAlt } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FaUserCircle } from "react-icons/fa";
+import { useGlobalContext } from "../provider/GlobalProvider";
+import fetchUserDetails from "../utils/fetchUserDetails";
+import { setUserDetails } from "../store/userSlice";
 const Avatar = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const { handleLogOut } = useGlobalContext();
+
   const handleLogout = async () => {
     try {
       const response = await Axios({
@@ -17,10 +23,11 @@ const Avatar = () => {
       });
       if (response.status === 200 || response.data.success) {
         toast.success(response.data.message);
-        localStorage.clear();
 
+        handleLogOut();
+        const userDetails = await fetchUserDetails();
+        dispatch(setUserDetails(userDetails?.data));
         navigate("/");
-        window.location.reload();
       } else {
         toast.error(response.data.message || "Something went wrong.");
       }
@@ -38,10 +45,11 @@ const Avatar = () => {
           className="btn btn-ghost btn-circle avatar "
         >
           <div className="w-10  rounded-full  ">
-            {
-              user.avatar ?
-            (<img alt="Tailwind CSS Navbar component" src={user.avatar} />):( <FaUserCircle size={39} />)
-            }
+            {user.avatar ? (
+              <img alt="Tailwind CSS Navbar component" src={user.avatar} />
+            ) : (
+              <FaUserCircle size={39} />
+            )}
           </div>
         </div>
         <ul
@@ -57,7 +65,7 @@ const Avatar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/dashboard/myorders" className="justify-between  ">
+            <Link to="/dashboard/order" className="justify-between  ">
               MyOrders
               <span className="hover:scale-102 hover:text-red-600">
                 <FaExternalLinkAlt />
@@ -73,8 +81,13 @@ const Avatar = () => {
             </Link>
           </li>
 
-          <li>
-            <Link to="/setting">Settings</Link>
+          <li className="lg:hidden ">
+            <Link to="/cart" className="justify-between  ">
+              Cart
+              <span className="hover:scale-102 hover:text-red-600">
+                <FaExternalLinkAlt />
+              </span>
+            </Link>
           </li>
 
           <button

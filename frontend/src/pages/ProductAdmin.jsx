@@ -6,6 +6,8 @@ import Loading from "../components/Loading";
 import ProductCard from "../components/ProductCard";
 import SearchProduct from "../components/SearchProduct";
 import noData from "../assets/nodata.png";
+import EditProductAdminModal from "../components/EditProductAdminModal";
+import DeleteProductAdminModal from "../components/DeleteProductAdminModal";
 
 const ProductAdmin = () => {
   const [productData, setProductData] = useState([]);
@@ -13,7 +15,21 @@ const ProductAdmin = () => {
   const [totalCount, setTotalCount] = useState(1);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
-
+  const [openDelete, setOpenDelete] = useState(false);
+  const [deleteProduct, setDeleteProduct] = useState({ _id: "" });
+  const [editOpen, setEditOpen] = useState(false);
+  const [editProductData, setEditProductData] = useState({
+    name: "",
+    image: [],
+    category: [],
+    subCategory: [],
+    unit: "",
+    stock: 0,
+    price: 0,
+    discount: 0,
+    description: "",
+    more_details: {},
+  });
   const fetchProductData = async () => {
     try {
       setLoading(true);
@@ -70,7 +86,7 @@ const ProductAdmin = () => {
   };
 
   return (
-    <section className="px-4 pl-4 pr-4 ">
+    <section className="lg:px-4 lg:pl-4 lg:pr-4  min-h-[70vh]">
       <div className="p-3 bg-white rounded-lg shadow-md shadow-neutral-300 mb-4 gap-4 flex items-center justify-between ">
         <h1 className="font-semibold text-neutral-700 uppercase lg:text-xl">
           Products
@@ -81,21 +97,29 @@ const ProductAdmin = () => {
       {loading && <Loading />}
       <div>
         <div className="min-h-[65vh]">
-          <div className="grid grid-cols-2  sm:grid-cols-3  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mx-1 my-2   ">
+          <div className="grid grid-cols-2  sm:grid-cols-3  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 lg:gap-4 mx-1 my-2   ">
             {productData.length > 0
               ? productData.map((item) => (
-                  <ProductCard data={item} key={item._id} />
+                <ProductCard
+                  className="w-70"
+                    data={item}
+                    key={item._id}
+                    setEditOpen={setEditOpen}
+                    setEditProductData={setEditProductData}
+                    setOpenDelete={setOpenDelete}
+                    setDeleteProduct={setDeleteProduct}
+                  />
                 ))
               : !loading && (
                   <div className="col-span-full text-center mt-10">
                     <img
-                      src={noData} 
+                      src={noData}
                       alt="No products found"
                       className="h-68 w-68 m-auto mt-10 bg-transparent grid grid-center rounded-full"
                     />
                     <p className="text-center  text-xl font-bold">
                       <div className="text-red-600 text-3xl uppercase">
-                        Sorry!!
+                        Sorry!!!
                       </div>
                       No products found for "{search}"
                     </p>
@@ -130,6 +154,22 @@ const ProductAdmin = () => {
           </div>
         )}
       </div>
+
+      {editOpen && (
+        <EditProductAdminModal
+          editProductData={editProductData}
+          fetchProductData={fetchProductData}
+          setEditOpen={setEditOpen}
+        />
+      )}
+
+      {openDelete && (
+        <DeleteProductAdminModal
+          deleteProduct={deleteProduct}
+          fetchProductData={fetchProductData}
+          setOpenDelete={setOpenDelete}
+        />
+      )}
     </section>
   );
 };

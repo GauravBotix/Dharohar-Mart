@@ -6,7 +6,7 @@ const Logo = () => {
   return (
     <>
       <div className="flex-row">
-        <Link to='/' className="flex"><img src={logo}  alt="" className="h-28 pl-2 pb-10 " /></Link>
+        <Link to='/' className="flex"><img src={logo}  alt="" className="h-30 items-center flex p-5 -mt-7 " /></Link>
       </div>
     </>
   );

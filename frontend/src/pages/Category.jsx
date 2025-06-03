@@ -49,7 +49,7 @@ const category = () => {
   }, []);
 
   return (
-    <section className="px-4 pl-4 pr-4">
+    <section className="px-4 pl-4 pr-4 min-h-[64vh] ">
       <div className="p-3 bg-white shadow-md  shadow-neutral-300 mb-4 rounded-lg flex items-center justify-between ">
         <h1 className="font-semibold text-neutral-700 uppercase text-xl ">
           Category

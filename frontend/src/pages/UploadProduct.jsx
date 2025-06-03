@@ -31,8 +31,6 @@ const UploadProduct = () => {
   const [openAdd, setOpenAdd] = useState(false);
   const [fieldName, setFieldName] = useState("");
 
- 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prev) => {
@@ -187,6 +185,7 @@ const UploadProduct = () => {
               <label
                 className=" min-w-full validator border-1 cursor-pointer h-20 rounded border-neutral-300 flex bg-white justify-center items-center "
                 htmlFor="file"
+                required
               >
                 <div className="flex flex-col justify-center items-center text-center">
                   {!imageLoading ? (
@@ -205,7 +204,6 @@ const UploadProduct = () => {
                 </div>
                 <input
                   type="file"
-                  required
                   name="file"
                   id="file"
                   onChange={handleProductImage}
@@ -245,28 +243,28 @@ const UploadProduct = () => {
             <div>
               <select
                 required
+                
                 onChange={(e) => {
                   const value = e.target.value;
-                  
+
                   const categoryDetails = allCategory.find(
                     (elem) => elem._id === value
                   );
-                  
+
                   setData((prev) => {
                     return {
                       ...prev,
                       category: [...prev.category, categoryDetails],
                     };
                   });
-                  
-                  
                 }}
                 className="border-1 p-2 rounded w-full  bg-white border-neutral-300 "
               >
                 <option
                   disabled
+                  value=""
                   selected
-                  className="font-light bg-neutral-500 disabled"
+                  className="font-semibold bg-slate-500  text-black"
                 >
                   Select category
                 </option>
@@ -305,9 +303,9 @@ const UploadProduct = () => {
             <div>
               <select
                 required
-                value=''
+                
                 onChange={(e) => {
-                  const value = e.target.value;   
+                  const value = e.target.value;
                   const SubcategoryDetails = allSubcategory.find(
                     (elem) => elem._id === value
                   );
@@ -317,14 +315,14 @@ const UploadProduct = () => {
                       subCategory: [...prev.subCategory, SubcategoryDetails],
                     };
                   });
-                  
-                  
                 }}
                 className="border-1 p-2 rounded w-full bg-white border-neutral-300 "
               >
                 <option
-                  value=''
-                  className="font-light bg-neutral-500 disabled "
+                  disabled
+                  value=""
+                  selected
+                  className="font-semibold bg-slate-500  text-black"
                 >
                   Select Sub-category
                 </option>
@@ -450,8 +448,6 @@ const UploadProduct = () => {
               );
             })}
           </div>
-
-          
 
           <div className="flex justify-between">
             <div

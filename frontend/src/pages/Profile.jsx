@@ -61,7 +61,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="px-4 pl-4 pr-4">
+    <div className="px-4 pl-4 pr-4 min-h-[60vh]">
       <div className="  bg-neutral-200 hover:border-neutral-700 hover:border p-0.5 w-18 h-18 flex items-center justify-center rounded-full overflow-hidden drop-shadow-sm">
         {user.avatar ? (
           <div

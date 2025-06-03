@@ -79,7 +79,7 @@ const UserMenu = () => {
         )}
 
         <Link
-          to={"/dashboard/myorders"}
+          to={"/dashboard/order"}
           className="px-2 hover:bg-orange-200 py-1"
         >
           My Orders

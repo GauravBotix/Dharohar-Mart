@@ -12,7 +12,7 @@ const Table = ({ data, column }) => {
     getCoreRowModel: getCoreRowModel(),
   });
   return (
-    <div className=" ">
+    <div className="">
       <table className="w-full border-1 border-neutral-700 rounded">
         <thead className="bg-neutral-700 text-white text-lg  ">
           {table.getHeaderGroups().map((headerGroup) => (
@@ -37,7 +37,7 @@ const Table = ({ data, column }) => {
         <tbody>
           {table.getRowModel().rows.map((row, index) => (
             <tr key={row.id}>
-              <td className="text-center border-neutral-700 border-2">
+              <td className="text-center  border-neutral-700 border-2">
                 {index + 1}.
               </td>
               {row.getVisibleCells().map((cell) => (

@@ -7,26 +7,21 @@ import {  useLocation, useNavigate } from "react-router-dom";
 import Avatar from "./Avatar";
 import { useSelector } from "react-redux";
 
-
-
 const Header = () => {
   const [isMobile] = useMobile();
   const location = useLocation();
   const user = useSelector((state) => state?.user);
   const navigate = useNavigate();
-
-  const redirectToLogin = () => {
-    navigate('/login');
-  }
-  // const redirectToSignup = () => {
-  //   navigate('/signup');
-  // }
   const isSearchPage = location.pathname === "/search";
 
+  const redirectToLogin = () => {
+    navigate("/login");
+  };
+
   return (
-    <header className="md:h-20 lg:shadow-sm items-center pt-2 fixed right-0 left-0 flex-col z-1 bg-neutral-100  font-semibold">
+    <header className="md:h-20 lg:shadow-sm items-center z-10000 pt-2 fixed right-0 left-0 flex-col  bg-neutral-100  font-semibold">
       {!(isSearchPage && isMobile) && (
-        <nav className=" flex justify-between ">
+        <nav className=" flex justify-between  ">
           {/* logo */}
           <div>
             <Logo />
@@ -45,9 +40,12 @@ const Header = () => {
                 <Avatar />
               ) : (
                 <div className="flex my-2 gap-x-1 cursor-pointer">
-                  <button onClick={redirectToLogin} className="text-md px-4 py-1 bg-blue-500 text-white cursor-pointer   hover:bg-blue-400 hover:text-white font-semibold    rounded">Login</button>
-            
-                  {/* <button onClick={redirectToSignup} className="text-md px-4 bg-blue-500 text-white cursor-pointer  py-1 hover:bg-blue-400 hover:text-white font-semibold    rounded">Signup</button> */}
+                  <button
+                    onClick={redirectToLogin}
+                    className="text-md px-4 py-1 bg-blue-500 text-white cursor-pointer   hover:bg-blue-400 hover:text-white font-semibold    rounded"
+                  >
+                    Login
+                  </button>
                 </div>
               )}
             </div>
@@ -60,7 +58,7 @@ const Header = () => {
           <Search />
         </div>
       ) : (
-        <div className="mx-auto md:hidden w-full px-4 mt-[-35px]">
+        <div className="mx-auto md:hidden w-full px-4 mt-[-15px]">
           <Search />
         </div>
       )}

@@ -122,7 +122,7 @@ const Subcategory = () => {
   ];
 
   return (
-    <section className="px-4 pl-4 pr-4">
+    <section className="px-4 pl-4 pr-4  ">
       <div className="p-3 bg-white shadow-md shadow-neutral-300 rounded-lg mb-4 flex items-center justify-between ">
         <h1 className="font-semibold text-neutral-700 uppercase text-xl ">
           Sub-Category

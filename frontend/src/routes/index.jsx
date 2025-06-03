@@ -16,6 +16,12 @@ import Subcategory from "../pages/Subcategory";
 import UploadProduct from "../pages/UploadProduct";
 import ProductAdmin from "../pages/ProductAdmin";
 import Admin from "../layout/Admin";
+import ProductList from "../pages/ProductList";
+import ProductDisplayPage from "../pages/ProductDisplayPage";
+import CartMobile from "../pages/CartMobile";
+import CheckOutPage from "../pages/CheckOutPage";
+import Success from "../pages/Success";
+import Cancel from "../pages/Cancel";
 
 let router = createBrowserRouter([
   {
@@ -59,7 +65,7 @@ let router = createBrowserRouter([
             element: <Profile />,
           },
           {
-            path: "myorders",
+            path: "order",
             element: <Myorders />,
           },
           {
@@ -68,21 +74,66 @@ let router = createBrowserRouter([
           },
           {
             path: "category",
-            element: <Admin><Category /></Admin>,
+            element: (
+              <Admin>
+                <Category />
+              </Admin>
+            ),
           },
           {
             path: "subcategory",
-            element: <Admin><Subcategory /></Admin>,
+            element: (
+              <Admin>
+                <Subcategory />
+              </Admin>
+            ),
           },
           {
             path: "product",
-            element: <Admin><ProductAdmin /></Admin>,
+            element: (
+              <Admin>
+                <ProductAdmin />
+              </Admin>
+            ),
           },
           {
             path: "upload-product",
-            element: <Admin><UploadProduct /></Admin>,
+            element: (
+              <Admin>
+                <UploadProduct />
+              </Admin>
+            ),
           },
         ],
+      },
+      {
+        path: ":category",
+        children: [
+          {
+            path: ":subcategory",
+            element: <ProductList />,
+          },
+        ],
+      },
+      {
+        path: "product/:product",
+        element: <ProductDisplayPage />,
+      },
+      {
+        path: "cart",
+        element: <CartMobile />,
+      },
+      {
+        path: "checkout",
+        element: <CheckOutPage />,
+      },
+      {
+        path: "success",
+        element: <Success />,
+      },
+      {
+        path: "cancel",
+        element: <Cancel />,
       },
     ],
   },

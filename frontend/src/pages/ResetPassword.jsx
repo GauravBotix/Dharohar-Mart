@@ -74,64 +74,61 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-2xl shadow-2xl">
-      <h2 className="text-2xl font-semibold mb-6 text-center text-blue-600">
-        Update Password
-      </h2>
-      <form className="space-y-4" onSubmit={handleSubmit}>
-        {/* <div className="flex items-center">
-            <div htmlFor="email" className="w-1/3 text-gray-700 font-medium">
-              Email
+    <section className="min-h-[65vh]">
+      <div className="max-w-md  mx-auto mt-10 p-6 bg-white rounded-2xl shadow-2xl">
+        <h2 className="text-2xl font-semibold mb-6 text-center text-blue-600">
+          Update Password
+        </h2>
+        <form className="space-y-4" onSubmit={handleSubmit}>
+          <div className="flex items-center">
+            <div htmlFor="password" className="w-1/3 text-gray-700 font-medium">
+              New Password
             </div>
-            <Email email={data.email} handleChange={handleChange} className='w-2/3'/>
-          </div> */}
+            <div className="w-2/3">
+              <Password
+                name="newPassword"
+                value={data.newPassword}
+                handleChange={handleChange}
+                showPassword={showPassword}
+                setShowPassword={setShowPassword}
+              />
+            </div>
+          </div>
 
-        <div className="flex items-center">
-          <div htmlFor="password" className="w-1/3 text-gray-700 font-medium">
-            New Password
+          <div className="flex items-center">
+            <div
+              htmlFor="confirmPassword"
+              className="w-1/3 text-gray-700 font-medium"
+            >
+              Confirm Password
+            </div>
+            <div className="w-2/3">
+              <ConfirmPassword
+                name="confirmPassword"
+                value={data.confirmPassword}
+                handleChange={handleChange}
+                showConfirmPassword={showConfirmPassword}
+                setShowConfirmPassword={setShowConfirmPassword}
+              />
+            </div>
           </div>
-          <div className="w-2/3">
-            <Password
-              name="newPassword"
-              value={data.newPassword}
-              handleChange={handleChange}
-              showPassword={showPassword}
-              setShowPassword={setShowPassword}
-            />
-          </div>
-        </div>
 
-        <div className="flex items-center">
-          <div
-            htmlFor="confirmPassword"
-            className="w-1/3 text-gray-700 font-medium"
-          >
-            Confirm Password
+          <div className="text-center mt-6">
+            <button
+              type="submit"
+              disabled={!valideValue}
+              className={` ${
+                valideValue
+                  ? "bg-blue-600 hover:bg-blue-700"
+                  : "bg-neutral-400 "
+              } text-white px-6 py-2 rounded-md`}
+            >
+              Update Password
+            </button>
           </div>
-          <div className="w-2/3">
-            <ConfirmPassword
-              name="confirmPassword"
-              value={data.confirmPassword}
-              handleChange={handleChange}
-              showConfirmPassword={showConfirmPassword}
-              setShowConfirmPassword={setShowConfirmPassword}
-            />
-          </div>
-        </div>
-
-        <div className="text-center mt-6">
-          <button
-            type="submit"
-            disabled={!valideValue}
-            className={` ${
-              valideValue ? "bg-blue-600 hover:bg-blue-700" : "bg-neutral-400 "
-            } text-white px-6 py-2 rounded-md`}
-          >
-            Update Password
-          </button>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
+    </section>
   );
 };
 

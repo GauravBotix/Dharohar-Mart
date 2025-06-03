@@ -28,7 +28,7 @@ const DeleteCategoryModal = ({
       AxiosToastError(error);
     }
   };
-  
+
   const modalRef = useRef();
   useEffect(() => {
     if (modalRef.current) {
@@ -52,7 +52,7 @@ const DeleteCategoryModal = ({
             <IoCloseCircle size={25} />
           </button>
           <p className="mt-2 text-center">
-            Are you sure to delete category{" "}
+            Are you sure want to delete this category{" "}
             <span className="text-red-500 font-semibold capitalize">
               Permanently?
             </span>

@@ -11,14 +11,14 @@ const SearchProduct = ({ handleSearch, search }) => {
   return (
     <div>
       <label htmlFor=""></label>
-      <label className="input rounded-full" htmlFor="search">
+      <label className="input rounded-full " htmlFor="search">
         <input
           type="search"
           ref={inputRef}
           id="search"
           required
           placeholder="Search"
-          className="text-md font-semibold text-neutral-700 pl-1 "
+          className="text-md font-semibold  text-neutral-700 pl-1 "
           value={search}
           onChange={handleSearch}
         />

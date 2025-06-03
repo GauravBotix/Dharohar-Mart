@@ -5,17 +5,20 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import connectDb from "./config/db.js";
 import userRouter from "./routes/user.router.js";
-import categoryRouter from './routes/category.router.js'
+import categoryRouter from "./routes/category.router.js";
 import uploadImageRouter from "./routes/upload.category.image.router.js";
 import subCategoryRouter from "./routes/subcategory.router.js";
 import productRouter from "./routes/product.router.js";
+import cartRouter from "./routes/cart.router.js";
+import addressRouter from "./routes/address.router.js";
+import orderRouter from "./routes/order.router.js";
 dotenv.config();
 const port = process.env.PORT;
 const app = express();
 
 app.use(
   cors({
-    origin:'http://localhost:5173',
+    origin: "http://localhost:5173",
     credentials: true,
   })
 );
@@ -35,6 +38,9 @@ app.use("/file", uploadImageRouter);
 app.use("/category", categoryRouter);
 app.use("/subcategory", subCategoryRouter);
 app.use("/product", productRouter);
+app.use("/cart", cartRouter);
+app.use("/address", addressRouter);
+app.use("/order", orderRouter);
 
 connectDb().then(() => {
   app.listen(port, () => {

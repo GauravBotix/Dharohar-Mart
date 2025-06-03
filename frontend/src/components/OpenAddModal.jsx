@@ -6,7 +6,7 @@ const OpenAddModal = ({ setOpenAdd, onChange, value, onSubmit }) => {
   const modalRef = useRef();
   useEffect(() => {
     if (modalRef.current) {
-      modalRef.current.showModal(); // Open the dialog
+      modalRef.current.showModal();
     }
     setTimeout(() => {
       inputRef.current?.focus();

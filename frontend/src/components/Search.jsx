@@ -7,6 +7,8 @@ const Search = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isSearchPage, setIsSearchPage] = useState(false);
+  const params = useLocation();
+  const searchText = params?.search?.slice(3);
   useEffect(() => {
     const isSearch = location.pathname === "/search";
     setIsSearchPage(isSearch);
@@ -18,23 +20,28 @@ const Search = () => {
   };
 
   const handlechange = () => {
-    navigate('/');
-    console.log('clicked');
-  }
- 
+    navigate("/");
+  };
+
+  const handleOnChange = (e) => {
+    const value = e.target.value;
+    const url = `/search?q=${value}`;
+    navigate(url);
+  };
+
   return (
     <>
-      <label
-        className="input w-full flex bg-neutral-100 rounded-full"
-        onClick={redirectToSearch}
-      >
-        {
-          (isMobile && isSearchPage) ? 
-         
-            <FaArrowLeft onClick={handlechange}/>
-         
-        :('')
-      }
+      <label className="input w-full flex bg-neutral-100 rounded-full">
+        {isMobile && isSearchPage ? (
+          <FaArrowLeft
+            onClick={(e) => {
+              e.stopPropagation();
+              handlechange();
+            }}
+          />
+        ) : (
+          ""
+        )}
 
         {!isSearchPage ? (
           <>
@@ -56,14 +63,16 @@ const Search = () => {
                 repeat={Infinity}
               />
             </div>
-            <input type="search" />
+            <input type="search" onClick={redirectToSearch} />
           </>
         ) : (
           <input
             type="search"
             autoFocus
+            default={searchText}
             placeholder="Search for Atta, Dal, Rice"
             className="pl-2"
+            onChange={handleOnChange}
           />
         )}
 

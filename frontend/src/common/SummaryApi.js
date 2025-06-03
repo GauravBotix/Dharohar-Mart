@@ -81,6 +81,74 @@ const SummaryApi = {
     url: "product/get_product",
     method: "post",
   },
+  get_product_by_category: {
+    url: "product/get_product_by_category",
+    method: "post",
+  },
+  get_product_by_category_subcategory: {
+    url: "product/get_product_by_category_subcategory",
+    method: "post",
+  },
+  get_product_detail: {
+    url: "product/get_product_detail",
+    method: "post",
+  },
+  update_product: {
+    url: "product/update_product",
+    method: "put",
+  },
+  delete_product: {
+    url: "product/delete_product",
+    method: "delete",
+  },
+  search_product: {
+    url: "product/search_product",
+    method: "post",
+  },
+  add_to_cart: {
+    url: "cart/add_to_cart",
+    method: "post",
+  },
+  get_Cart: {
+    url: "cart/get_Cart",
+    method: "get",
+  },
+  update_Cart: {
+    url: "cart/update_Cart",
+    method: "put",
+  },
+  delete_Cart: {
+    url: "cart/delete_Cart",
+    method: "delete",
+  },
+  add_address: {
+    url: "address/add_address",
+    method: "post",
+  },
+  get_address: {
+    url: "address/get_address",
+    method: "get",
+  },
+  update_address: {
+    url: "address/update_address",
+    method: "put",
+  },
+  delete_address: {
+    url: "address/delete_address",
+    method: "delete",
+  },
+  cash_on_delivery: {
+    url: "order/cash_on_delivery",
+    method: "post",
+  },
+  online_payment: {
+    url: "order/online_payment",
+    method: "post",
+  },
+  get_order_items: {
+    url: "order/get_order_items",
+    method: "get",
+  },
 };
 
 export default SummaryApi;
