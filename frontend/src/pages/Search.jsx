@@ -58,7 +58,7 @@ const Search = () => {
   };
 
   return (
-    <section className="bg-neutral-100 min-h-[60vh]">
+    <section className="bg-neutral-100 min-h-[70vh]">
       <div className="container mx-auto p-4">
         <p className="font-semibold">Search Results: {data.length} </p>
 
