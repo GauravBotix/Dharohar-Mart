@@ -11,7 +11,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import Nodata from "../assets/nodata.png";
 import ViewImage from "../components/ViewImage";
 import EditSubcategoryModal from "../components/EditSubcategoryModal";
-import DeleteSubcategoryModal from "../components/DeleteSubCategoryModal";
+import DeleteSubcategoryModal from "../components/DeleteSubcategoryModal";
 
 const Subcategory = () => {
   const [openUploadSubCategory, setOpenUploadSubCategory] = useState(false);
