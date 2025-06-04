@@ -128,10 +128,8 @@ const paymentController = async (req, res) => {
       cancel_url: `${process.env.FRONTEND_URL}/cancel`,
     };
     const session = await Stripe.checkout.sessions.create(params);
-
-    return res
-      .status(200)
-      .json({ id: session.id, url: session.url, success: true, error: false });
+    // { id: session.id, url: session.url, success: true, error: false }
+    return res.status(200).json(session);
   } catch (error) {
     return res.status(500).json({
       message: error.message || error,
@@ -175,7 +173,7 @@ const getOrderProductItems = async ({
 
 const webhook = async (req, res) => {
   const event = req.body;
-
+  const endPointSecret = process.env.STRIPE_ENDPOINT_WEBHOOK_SECRET_KEY;
   switch (event.type) {
     case "checkout.session.completed":
       const session = event.data.object;
