@@ -10,7 +10,6 @@ import { useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import fetchUserDetails from "../utils/fetchUserDetails";
 
-
 const UserAvatarEdit = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -42,7 +41,7 @@ const UserAvatarEdit = () => {
         dispatch(updatedAvatar(uploadeAvatar.avatar));
         await document.getElementById("my_modal_1").close();
 
-        setInterval(() => {
+        setTimeout(() => {
           window.location.reload();
         }, 1000);
       }
@@ -52,19 +51,21 @@ const UserAvatarEdit = () => {
       setLoading(false);
     }
   };
-  
+
   const modalRef = useRef();
-    useEffect(() => {
-      if (modalRef.current) {
-        modalRef.current.showModal(); // Open the dialog
-      }
-    }, []);
+  useEffect(() => {
+    if (modalRef.current) {
+      modalRef.current.showModal(); // Open the dialog
+    }
+  }, []);
 
   return (
     <section>
       <dialog ref={modalRef} id="my_modal_1" className="modal modal-middle">
         <div className="modal-box relative ">
-          <h2 className="text-xl font-bold text-center pb-5 uppercase">Update Avatar</h2>
+          <h2 className="text-xl font-bold text-center pb-5 uppercase">
+            Update Avatar
+          </h2>
 
           <button
             className="absolute top-[15px] right-[5px]"
