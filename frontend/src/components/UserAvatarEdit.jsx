@@ -44,7 +44,7 @@ const UserAvatarEdit = () => {
 
         setInterval(() => {
           window.location.reload();
-        }, 50);
+        }, 1000);
       }
     } catch (error) {
       AxiosToastError(error);
