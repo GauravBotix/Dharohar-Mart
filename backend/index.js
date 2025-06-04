@@ -15,18 +15,15 @@ import orderRouter from "./routes/order.router.js";
 dotenv.config();
 const port = process.env.PORT;
 const app = express();
-
 app.use(
   cors({
     origin: process.env.FRONTEND_URL,
     credentials: true,
   })
 );
-
+app.use(express.json());
 app.use(morgan(":method :url :status :response-time"));
 app.use(cookieParser());
-app.use("/order", orderRouter);
-app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
@@ -41,6 +38,7 @@ app.use("/subcategory", subCategoryRouter);
 app.use("/product", productRouter);
 app.use("/cart", cartRouter);
 app.use("/address", addressRouter);
+app.use("/order", orderRouter);
 
 connectDb().then(() => {
   app.listen(port, () => {
