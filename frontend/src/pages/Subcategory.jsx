@@ -5,11 +5,11 @@ import SummaryApi from "../common/SummaryApi";
 import AxiosToastError from "../utils/AxiosError";
 import { createColumnHelper } from "@tanstack/react-table";
 import Table from "../components/Table";
-import ViewImage from "../components/viewImage";
+
 import { FaPencil } from "react-icons/fa6";
 import { FaTrashAlt } from "react-icons/fa";
 import Nodata from "../assets/nodata.png";
-
+import ViewImage from "../components/ViewImage";
 import EditSubcategoryModal from "../components/EditSubcategoryModal";
 import DeleteSubcategoryModal from "../components/DeleteSubCategoryModal";
 

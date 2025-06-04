@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import AxiosToastError from "../utils/AxiosError";
 import Axios from "../utils/Axios";
 import SummaryApi from "../common/SummaryApi";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+
 import DisplayPrice from "../utils/DisplayPrice";
 import discountPrice from "../utils/DiscountPrice";
 import AddToCartButton from "../components/AddToCartButton";

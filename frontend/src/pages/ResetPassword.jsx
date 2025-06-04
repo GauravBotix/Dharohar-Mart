@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
-// import Email from "../components/Email";
 import Password from "../components/Password";
 import ConfirmPassword from "../components/ConfirmPassword";
 import toast from "react-hot-toast";

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import AddAddress from "../components/AddAddress";
-import { MdDelete } from "react-icons/md";
-import { MdEdit } from "react-icons/md";
 import EditAddress from "../components/EditAddress";
 import { FaPencil } from "react-icons/fa6";
 import { FaTrashAlt } from "react-icons/fa";
@@ -17,10 +15,9 @@ import Nohome from "../components/Nohome";
 
 const Address = () => {
   const addressList = useSelector((state) => state.address?.addressList);
-  console.log('addressList', addressList);
-  console.log('addressList[0]', addressList[0]);
-  
-  
+  console.log("addressList", addressList);
+  console.log("addressList[0]", addressList[0]);
+
   const [openAddress, setOpenAddress] = useState(false);
   const [OpenEdit, setOpenEdit] = useState(false);
   const [editData, setEditData] = useState({});
@@ -58,12 +55,12 @@ const Address = () => {
         </button>
       </div>
       <div className="bg-neutral-100  grid gap-4">
-        {addressList[0]?(
+        {addressList[0] ? (
           <div className="grid gap-2">
             {addressList.map((address, index) => {
               return (
                 <div
-                  key={index+address._id}
+                  key={index + address._id}
                   className={`p-3 flex gap-3 w-full text-sm font-semibold bg-neutral-300 rounded-lg  py-5 px-4 ${
                     !address.status && "hidden"
                   }`}
@@ -99,8 +96,9 @@ const Address = () => {
             })}
           </div>
         ) : (
-            <div><Nohome /></div>
-          
+          <div>
+            <Nohome />
+          </div>
         )}
 
         <div

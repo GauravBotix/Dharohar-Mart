@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import Email from "../components/Email";
+
 
 import toast from "react-hot-toast";
 import Axios from "../utils/Axios";

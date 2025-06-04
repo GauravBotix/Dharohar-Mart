@@ -9,7 +9,6 @@ import AddToCartButton from "./AddToCartButton";
 import DiscountPrice from "../utils/DiscountPrice";
 import imageEmpty from "../assets/imageEmpty.png";
 import toast from "react-hot-toast";
-import { IoIosCloseCircle } from "react-icons/io";
 
 const CartDrawerModal = ({ close }) => {
   const { notDiscountTotalPrice, totalPrice, totalQty } = useGlobalContext();
@@ -39,7 +38,6 @@ const CartDrawerModal = ({ close }) => {
             <IoClose size={20} />
           </Link>
           <button
-            
             onClick={close}
             className="hover:bg-black hover:text-white rounded-full cursor-pointer hidden lg:block"
           >

@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import validUrl from "../utils/validUrl";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import CategoryWiseProduct from "../components/CategoryWiseProduct";
-import LoadingProductCard from "../components/LoadingProductCard";
 
 const Home = () => {
   const loadingCategory = useSelector((state) => state.product.loadingCategory);

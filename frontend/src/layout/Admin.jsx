@@ -6,7 +6,7 @@ const Admin = ({ children }) => {
   const user = useSelector((state) => state.user);
   return (
     <section className="min-h-[65vh] px-4 pl-4 pr-4 ">
-      {isAdmin(user.role) ? (
+      {isAdmin(user?.role) ? (
         children
       ) : (
         <p className="font-semibold text-white p-3   bg-red-500 text-center rounded ">

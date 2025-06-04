@@ -9,7 +9,7 @@ import { IoCloseCircle } from "react-icons/io5";
 import { useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import fetchUserDetails from "../utils/fetchUserDetails";
-// import ViewImage from "../components/ViewImage";
+
 
 const UserAvatarEdit = () => {
   const user = useSelector((state) => state.user);

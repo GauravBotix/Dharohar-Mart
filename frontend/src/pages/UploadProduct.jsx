@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { FaCloudUploadAlt, FaTrashAlt } from "react-icons/fa";
 import uploadProductImage from "../utils/uploadProductImage";
-import ViewImage from "../components/viewImage";
+import ViewImage from "../components/ViewImage";
 import { useSelector } from "react-redux";
 import { IoClose } from "react-icons/io5";
 import OpenAddModal from "../components/OpenAddModal";
@@ -243,7 +243,6 @@ const UploadProduct = () => {
             <div>
               <select
                 required
-                
                 onChange={(e) => {
                   const value = e.target.value;
 
@@ -303,7 +302,6 @@ const UploadProduct = () => {
             <div>
               <select
                 required
-                
                 onChange={(e) => {
                   const value = e.target.value;
                   const SubcategoryDetails = allSubcategory.find(

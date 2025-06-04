@@ -5,9 +5,9 @@ import Axios from "../utils/Axios";
 import SummaryApi from "../common/SummaryApi";
 import { logout } from "../store/userSlice";
 import toast from "react-hot-toast";
-import AxiosError from "../utils/AxiosError";
 import { HiOutlineExternalLink } from "react-icons/hi";
 import isAdmin from "../utils/isAdmin";
+import AxiosToastError from "../utils/AxiosError";
 
 const UserMenu = () => {
   const user = useSelector((state) => state.user);
@@ -19,7 +19,6 @@ const UserMenu = () => {
       const response = await Axios({
         ...SummaryApi.logout,
       });
-      console.log("logout", response);
       if (response.data.success) {
         dispatch(logout());
         localStorage.clear();
@@ -27,8 +26,7 @@ const UserMenu = () => {
         navigate("/");
       }
     } catch (error) {
-      console.log(error);
-      AxiosError(error);
+      AxiosToastError(error);
     }
   };
 
@@ -37,7 +35,7 @@ const UserMenu = () => {
       <div className="font-semibold">My Account</div>
       <div className="text-sm flex items-center gap-2">
         <span className="min-w-52 text-ellipsis line-clamp-1">
-          {user.name || user.mobile}{" "}
+          {user?.name || user?.mobile}{" "}
           <span className="text-medium text-red-600">
             {user.role === "ADMIN" ? "(Admin)" : ""}
           </span>
