@@ -171,9 +171,19 @@ const getOrderProductItems = async ({
   return productList;
 };
 
+
 const webhook = async (req, res) => {
-  const event = req.body;
-  const endPointSecret = process.env.STRIPE_ENDPOINT_WEBHOOK_SECRET_KEY;
+  const endpointSecret = process.env.STRIPE_ENDPOINT_WEBHOOK_SECRET_KEY;
+  let event;
+
+  try {
+    const sig = req.headers["stripe-signature"];
+    event = Stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
+  } catch (err) {
+    console.error("Webhook signature verification failed.", err.message);
+    return res.status(400).send(`Webhook Error: ${err.message}`);
+  }
+
   switch (event.type) {
     case "checkout.session.completed":
       const session = event.data.object;
@@ -191,19 +201,15 @@ const webhook = async (req, res) => {
       });
       const order = await orderModel.insertMany(orderProduct);
       if (Boolean(order[0])) {
-        const removeCartItems = await CartProductModel.deleteMany({
-          userId: userId,
-        });
-        const updateUser = await userModel.updateOne(
-          { _id: userId },
-          { shopping_cart: [] }
-        );
+        await CartProductModel.deleteMany({ userId: userId });
+        await userModel.updateOne({ _id: userId }, { shopping_cart: [] });
       }
-
       break;
+
     default:
       console.log(`Unhandled event type ${event.type}`);
   }
+
   res.json({ received: true });
 };
 
