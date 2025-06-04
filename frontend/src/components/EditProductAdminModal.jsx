@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaCloudUploadAlt, FaTrashAlt } from "react-icons/fa";
 import uploadProductImage from "../utils/uploadProductImage";
-import ViewImage from "../components/viewImage";
+import ViewImage from "../components/ViewImage";
 import { useSelector } from "react-redux";
 import { IoClose, IoCloseCircle } from "react-icons/io5";
 import OpenAddModal from "../components/OpenAddModal";
